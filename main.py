@@ -8,7 +8,6 @@ SOUTH = 'SOUTH'
 EAST = 'EAST'
 WEST = 'WEST'
 DIRECTIONS = [NORTH, SOUTH, EAST, WEST]
-game_start = False
 
 gridarr = [
     [0,0,0,0,0],
@@ -53,11 +52,19 @@ def place_coordinates(str):
 
 
 def main():
+    game_start = False
     print('Enter toy robot commands')
-    command = input()
-    while command != 'REPORT':
+    while True:
+        # command = 'PLACE 0,0,NORTH'
         command = input()
-    print(command)
+        posit = place_coordinates(command)
+        if posit:
+            if not game_start:
+                game_start = True
+            break
+        if game_start:
+            pass
+    print(posit)
 
 
 if __name__ == '__main__':
