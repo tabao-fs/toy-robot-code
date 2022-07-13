@@ -59,12 +59,25 @@ def place_coordinates(str):
 
 
 def rotate_direction(posits, turn):
+    curr = posits[2]
     if turn == LEFT:
-        pass
+        if curr == NORTH:
+            grid[posits[0]][posits[1]] = WEST
+        elif curr == WEST:
+            grid[posits[0]][posits[1]] = SOUTH
+        elif curr == SOUTH:
+            grid[posits[0]][posits[1]] = EAST
+        elif curr == EAST:
+            grid[posits[0]][posits[1]] = NORTH
     elif turn == RIGHT:
-        pass
-
-    return posits
+        if curr == NORTH:
+            grid[posits[0]][posits[1]] = EAST
+        elif curr == EAST:
+            grid[posits[0]][posits[1]] = SOUTH
+        elif curr == SOUTH:
+            grid[posits[0]][posits[1]] = WEST
+        elif curr == WEST:
+            grid[posits[0]][posits[1]] = NORTH
 
 
 def main():
