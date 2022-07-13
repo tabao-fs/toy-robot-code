@@ -58,6 +58,15 @@ def place_coordinates(str):
         return False
 
 
+def rotate_direction(posits, turn):
+    if turn == LEFT:
+        pass
+    elif turn == RIGHT:
+        pass
+
+    return posits
+
+
 def main():
     game_start = False
     print('Enter toy robot commands')
@@ -76,9 +85,9 @@ def main():
         elif command == MOVE:
             pass
         elif command == LEFT:
-            pass
+            rotate_direction(posits, LEFT)
         elif command == RIGHT:
-            pass
+            rotate_direction(posits, RIGHT)
         elif command == REPORT:
             pass
         break
