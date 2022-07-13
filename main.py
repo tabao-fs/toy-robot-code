@@ -43,10 +43,17 @@ def place_coordinates(str):
         commands = str.split(" ")
         if commands[0] != PLACE:
             return False
+
         posits = commands[1].split(",")
         if len(posits) != 3 or not in_directions_list(posits[2]):
             return False
-        return [int(posits[0]), int(posits[1]), posits[2]]
+
+        x = int(posits[0])
+        y = int(posits[1])
+        if (x < 0 or x > 4) or (y < 0 or y > 4):
+            return False
+
+        return [x, y, posits[2]]
     except:
         return False
 
