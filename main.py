@@ -1,3 +1,4 @@
+PLACE = 'PLACE'
 MOVE = 'MOVE'
 LEFT = 'LEFT'
 RIGHT = 'RIGHT'
@@ -6,6 +7,7 @@ NORTH = 'NORTH'
 SOUTH = 'SOUTH'
 EAST = 'EAST'
 WEST = 'WEST'
+DIRECTIONS = [NORTH, SOUTH, EAST, WEST]
 game_start = False
 
 gridarr = [
@@ -32,8 +34,22 @@ grid = {
     4: square
 }
 
+
+def in_directions_list(str):
+    return set(DIRECTIONS).intersection(str.split())
+
+
 def place_coordinates(str):
-    pass
+    try:
+        commands = str.split(" ")
+        if commands[0] != PLACE:
+            return False
+        posits = commands[1].split(",")
+        if len(posits) != 3:
+            return False
+        return [int(posits[0]), int(posits[1]), posits[2]]
+    except:
+        return False
 
 
 def main():
