@@ -55,16 +55,28 @@ def main():
     game_start = False
     print('Enter toy robot commands')
     while True:
-        # command = 'PLACE 0,0,NORTH'
-        command = input()
-        posit = place_coordinates(command)
-        if posit:
-            if not game_start:
-                game_start = True
-            break
-        if game_start:
+        command = 'PLACE 0,0,NORTH'
+        # command = input()
+        posits = place_coordinates(command)
+
+        if not game_start and posits is False:
+            continue
+        if not game_start:
+            game_start = True
+
+        if posits:
+            grid[posits[0]][posits[1]] = posits[2]
+        elif command == MOVE:
             pass
-    print(posit)
+        elif command == LEFT:
+            pass
+        elif command == RIGHT:
+            pass
+        elif command == REPORT:
+            pass
+        break
+
+    print(posits)
 
 
 if __name__ == '__main__':
