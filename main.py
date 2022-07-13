@@ -23,7 +23,7 @@ grid = {
 }
 
 def main():
-    print('Hello, World!')
+    print('Enter toy robot commands')
 
 
 if __name__ == '__main__':
