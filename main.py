@@ -1,3 +1,9 @@
+MOVE = 'MOVE'
+LEFT = 'LEFT'
+RIGHT = 'RIGHT'
+REPORT = 'REPORT'
+game_start = False
+
 gridarr = [
     [0,0,0,0,0],
     [0,0,0,0,0],
@@ -24,6 +30,10 @@ grid = {
 
 def main():
     print('Enter toy robot commands')
+    command = input()
+    while command != 'REPORT':
+        command = input()
+    print(command)
 
 
 if __name__ == '__main__':
