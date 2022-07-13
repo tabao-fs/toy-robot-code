@@ -2,6 +2,10 @@ MOVE = 'MOVE'
 LEFT = 'LEFT'
 RIGHT = 'RIGHT'
 REPORT = 'REPORT'
+NORTH = 'NORTH'
+SOUTH = 'SOUTH'
+EAST = 'EAST'
+WEST = 'WEST'
 game_start = False
 
 gridarr = [
