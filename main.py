@@ -36,7 +36,7 @@ grid = {
 
 
 def in_directions_list(str):
-    return set(DIRECTIONS).intersection(str.split())
+    return set(DIRECTIONS).intersection([str])
 
 
 def place_coordinates(str):
