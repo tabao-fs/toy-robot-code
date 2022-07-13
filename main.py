@@ -32,6 +32,10 @@ grid = {
     4: square
 }
 
+def place_coordinates(str):
+    pass
+
+
 def main():
     print('Enter toy robot commands')
     command = input()
