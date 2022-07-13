@@ -80,6 +80,13 @@ def rotate_direction(posits, turn):
             grid[posits[0]][posits[1]] = NORTH
 
 
+def move_position(posits):
+    x = posits[0]
+    y = posits[1]
+    dir = posits[2]
+    pass
+
+
 def main():
     game_start = False
     print('Enter toy robot commands')
@@ -96,7 +103,7 @@ def main():
         if posits:
             grid[posits[0]][posits[1]] = posits[2]
         elif command == MOVE:
-            pass
+            move_position(posits)
         elif command == LEFT:
             rotate_direction(posits, LEFT)
         elif command == RIGHT:
