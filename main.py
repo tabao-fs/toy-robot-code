@@ -84,7 +84,15 @@ def move_position(posits):
     x = posits[0]
     y = posits[1]
     dir = posits[2]
-    pass
+
+    if dir == NORTH:
+        pass
+    elif dir == EAST:
+        pass
+    elif dir == SOUTH:
+        pass
+    elif dir == WEST:
+        pass
 
 
 def main():
