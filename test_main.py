@@ -17,6 +17,13 @@ class TestRobot(unittest.TestCase):
         res = run_robot()
         self.assertEqual('0,0,WEST', res)
 
+    @patch('builtins.input')
+    def test_place_3(self, inp):
+        inp.side_effect = [
+            'PLACE 1,2,EAST', 'MOVE', 'MOVE', 'LEFT', 'MOVE', 'REPORT']
+        res = run_robot()
+        self.assertEqual('3,3,NORTH', res)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -100,7 +100,6 @@ def run_robot():
     cur_posit = None
     print('Enter toy robot commands')
     while True:
-        # command = 'PLACE 0,0,NORTH'
         command = input()
         posits = place_coordinates(command)
 
