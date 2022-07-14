@@ -100,8 +100,8 @@ def main():
     cur_posit = None
     print('Enter toy robot commands')
     while True:
-        command = 'PLACE 0,0,NORTH'
-        # command = input()
+        # command = 'PLACE 0,0,NORTH'
+        command = input()
         posits = place_coordinates(command)
 
         if not game_start and posits is False:
@@ -110,6 +110,8 @@ def main():
             game_start = True
 
         if posits:
+            if cur_posit:
+                grid[cur_posit[0]][cur_posit[1]] = None
             grid[posits[0]][posits[1]] = posits[2]
             cur_posit = [posits[0], posits[1]]
         elif command == MOVE:
