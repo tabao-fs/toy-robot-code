@@ -88,17 +88,23 @@ def move_position(posits):
     facing = posits[2]
 
     if facing == NORTH and y + 1 <= 4:
+        y += 1
         grid[x][y] = None
-        grid[x][y + 1] = facing
+        grid[x][y] = facing
     elif facing == EAST and x + 1 <= 4:
+        x += 1
         grid[x][y] = None
-        grid[x][x + 1] = facing
+        grid[x][y] = facing
     elif facing == SOUTH and y - 1 >= 0:
+        y -= 1
         grid[x][y] = None
-        grid[x][y - 1] = facing
+        grid[x][y] = facing
     elif facing == WEST and x - 1 >= 0:
+        x -= 1
         grid[x][y] = None
-        grid[x][x - 1] = facing
+        grid[x][y] = facing
+
+    return [x, y, facing]
 
 
 def get_position(posits):
