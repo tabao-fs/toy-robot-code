@@ -95,7 +95,7 @@ def get_position(posits):
     return f'{posits[0]},{posits[1]},{posits[2]}'
 
 
-def main():
+def run_robot():
     game_start = False
     cur_posit = None
     print('Enter toy robot commands')
@@ -129,5 +129,5 @@ def main():
 
 
 if __name__ == '__main__':
-    res = main()
+    res = run_robot()
     print(res)
