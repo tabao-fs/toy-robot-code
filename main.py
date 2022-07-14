@@ -61,44 +61,44 @@ def place_coordinates(str):
 def rotate_direction(posits, turn):
     x = posits[0]
     y = posits[1]
-    curr = posits[2]
+    facing = posits[2]
     if turn == LEFT:
-        if curr == NORTH:
+        if facing == NORTH:
             grid[x][y] = WEST
-        elif curr == WEST:
+        elif facing == WEST:
             grid[x][y] = SOUTH
-        elif curr == SOUTH:
+        elif facing == SOUTH:
             grid[x][y] = EAST
-        elif curr == EAST:
+        elif facing == EAST:
             grid[x][y] = NORTH
     elif turn == RIGHT:
-        if curr == NORTH:
+        if facing == NORTH:
             grid[x][y] = EAST
-        elif curr == EAST:
+        elif facing == EAST:
             grid[x][y] = SOUTH
-        elif curr == SOUTH:
+        elif facing == SOUTH:
             grid[x][y] = WEST
-        elif curr == WEST:
+        elif facing == WEST:
             grid[x][y] = NORTH
 
 
 def move_position(posits):
     x = posits[0]
     y = posits[1]
-    dir = posits[2]
+    facing = posits[2]
 
-    if dir == NORTH and y + 1 <= 4:
+    if facing == NORTH and y + 1 <= 4:
         grid[x][y] = None
-        grid[x][y + 1] = dir
-    elif dir == EAST and x + 1 <= 4:
+        grid[x][y + 1] = facing
+    elif facing == EAST and x + 1 <= 4:
         grid[x][y] = None
-        grid[x][x + 1] = dir
-    elif dir == SOUTH and y - 1 >= 0:
+        grid[x][x + 1] = facing
+    elif facing == SOUTH and y - 1 >= 0:
         grid[x][y] = None
-        grid[x][y - 1] = dir
-    elif dir == WEST and x - 1 >= 0:
+        grid[x][y - 1] = facing
+    elif facing == WEST and x - 1 >= 0:
         grid[x][y] = None
-        grid[x][x - 1] = dir
+        grid[x][x - 1] = facing
 
 
 def main():
