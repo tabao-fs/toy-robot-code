@@ -86,13 +86,17 @@ def move_position(posits):
     dir = posits[2]
 
     if dir == NORTH and y + 1 <= 4:
-        pass
+        grid[x][y] = None
+        grid[x][y + 1] = dir
     elif dir == EAST and x + 1 <= 4:
-        pass
+        grid[x][y] = None
+        grid[x][x + 1] = dir
     elif dir == SOUTH and y - 1 >= 0:
-        pass
+        grid[x][y] = None
+        grid[x][y - 1] = dir
     elif dir == WEST and x - 1 >= 0:
-        pass
+        grid[x][y] = None
+        grid[x][x - 1] = dir
 
 
 def main():
