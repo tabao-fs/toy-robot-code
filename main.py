@@ -101,6 +101,10 @@ def move_position(posits):
         grid[x][x - 1] = facing
 
 
+def get_position(posits):
+    return f'{posits[0]},{posits[1]},{posits[2]}'
+
+
 def main():
     game_start = False
     cur_posit = None
@@ -128,11 +132,10 @@ def main():
             posit = [cur_posit[0], cur_posit[1], grid[cur_posit[0]][cur_posit[1]]]
             rotate_direction(posit, RIGHT)
         elif command == REPORT:
-            pass
-        break
-
-    print(posits)
+            posit = [cur_posit[0], cur_posit[1], grid[cur_posit[0]][cur_posit[1]]]
+            return get_position(posit)
 
 
 if __name__ == '__main__':
-    main()
+    res = main()
+    print(res)
