@@ -130,7 +130,7 @@ def main():
             cur_posit = [posits[0], posits[1]]
         elif command == MOVE:
             posit = [cur_posit[0], cur_posit[1], grid[cur_posit[0]][cur_posit[1]]]
-            move_position(posit)
+            cur_posit = move_position(posit)
         elif command == LEFT:
             posit = [cur_posit[0], cur_posit[1], grid[cur_posit[0]][cur_posit[1]]]
             rotate_direction(posit, LEFT)
