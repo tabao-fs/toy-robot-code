@@ -9,28 +9,12 @@ EAST = 'EAST'
 WEST = 'WEST'
 DIRECTIONS = [NORTH, SOUTH, EAST, WEST]
 
-gridarr = [
-    [0,0,0,0,0],
-    [0,0,0,0,0],
-    [0,0,0,0,0],
-    [0,0,0,0,0],
-    [0,0,0,0,0]
-]
-
-square = {
-    0: None,
-    1: None,
-    2: None,
-    3: None,
-    4: None
-}
-
 grid = {
-    0: square,
-    1: square,
-    2: square,
-    3: square,
-    4: square
+    0: { 0: None, 1: None, 2: None, 3: None, 4: None },
+    1: { 0: None, 1: None, 2: None, 3: None, 4: None },
+    2: { 0: None, 1: None, 2: None, 3: None, 4: None },
+    3: { 0: None, 1: None, 2: None, 3: None, 4: None },
+    4: { 0: None, 1: None, 2: None, 3: None, 4: None }
 }
 
 
