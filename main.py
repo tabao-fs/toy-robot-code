@@ -103,6 +103,7 @@ def move_position(posits):
 
 def main():
     game_start = False
+    cur_posit = None
     print('Enter toy robot commands')
     while True:
         command = 'PLACE 0,0,NORTH'
@@ -116,12 +117,16 @@ def main():
 
         if posits:
             grid[posits[0]][posits[1]] = posits[2]
+            cur_posit = [posits[0], posits[1]]
         elif command == MOVE:
-            move_position(posits)
+            posit = [cur_posit[0], cur_posit[1], grid[cur_posit[0]][cur_posit[1]]]
+            move_position(posit)
         elif command == LEFT:
-            rotate_direction(posits, LEFT)
+            posit = [cur_posit[0], cur_posit[1], grid[cur_posit[0]][cur_posit[1]]]
+            rotate_direction(posit, LEFT)
         elif command == RIGHT:
-            rotate_direction(posits, RIGHT)
+            posit = [cur_posit[0], cur_posit[1], grid[cur_posit[0]][cur_posit[1]]]
+            rotate_direction(posit, RIGHT)
         elif command == REPORT:
             pass
         break
