@@ -24,6 +24,30 @@ class TestRobot(unittest.TestCase):
         res = run_robot()
         self.assertEqual('3,3,NORTH', res)
 
+    @patch('builtins.input')
+    def test_place_table_edge(self, inp):
+        inp.side_effect = ['PLACE 0,0,WEST', 'MOVE', 'REPORT']
+        res = run_robot()
+        self.assertEqual('0,0,WEST', res)
+
+    @patch('builtins.input')
+    def test_ignore_before_place(self, inp):
+        inp.side_effect = ['REPORT', 'MOVE', 'LEFT', 'RIGHT', 'PLACE 0,0,NORTH', 'MOVE', 'REPORT']
+        res = run_robot()
+        self.assertEqual('0,1,NORTH', res)
+
+    @patch('builtins.input')
+    def test_place_commands(self, inp):
+        inp.side_effect = ['PLACE 0,0,NORTH', 'PLACE 1,2,EAST', 'REPORT']
+        res = run_robot()
+        self.assertEqual('1,2,EAST', res)
+
+    @patch('builtins.input')
+    def test_wrong_place_command(self, inp):
+        inp.side_effect = ['PLACE 0,0,NORTH', 'PLACE 5,5,NORTH', 'REPORT']
+        res = run_robot()
+        self.assertEqual('0,0,NORTH', res)
+
 
 if __name__ == '__main__':
     unittest.main()
