@@ -1,3 +1,6 @@
+from re import X
+
+
 PLACE = 'PLACE'
 MOVE = 'MOVE'
 LEFT = 'LEFT'
@@ -40,6 +43,13 @@ def place_coordinates(str):
         return [x, y, posits[2]]
     except:
         return False
+
+
+class Robot:
+    def __init__(self, x, y, facing):
+        self.x = x
+        self.y = y
+        self.facing = facing
 
 
 def rotate_direction(posits, turn):
