@@ -73,6 +73,27 @@ class Robot:
                 grid[self.x][self.y] = NORTH
 
 
+    def move_position(self):
+        if self.facing == NORTH and self.y + 1 <= 4:
+            grid[self.x][self.y] = None
+            self.y += 1
+            grid[self.x][self.y] = self.facing
+        elif self.facing == EAST and self.x + 1 <= 4:
+            grid[self.x][self.y] = None
+            self.x += 1
+            grid[self.x][self.y] = self.facing
+        elif self.facing == SOUTH and self.y - 1 >= 0:
+            grid[self.x][self.y] = None
+            self.y -= 1
+            grid[self.x][self.y] = self.facing
+        elif self.facing == WEST and self.x - 1 >= 0:
+            grid[self.x][self.y] = None
+            self.x -= 1
+            grid[self.x][self.y] = self.facing
+
+        return [self.x, self.y, self.facing]
+
+
 def rotate_direction(posits, turn):
     x = posits[0]
     y = posits[1]
