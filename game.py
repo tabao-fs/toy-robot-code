@@ -94,6 +94,10 @@ class Robot:
         return [self.x, self.y, self.facing]
 
 
+    def get_position(self):
+        return f'{self.x},{self.y},{self.facing}'
+
+
 def rotate_direction(posits, turn):
     x = posits[0]
     y = posits[1]
