@@ -173,7 +173,10 @@ def run_robot():
                 robot = Robot(posits[0], posits[1], posits[2])
             else:
                 grid[robot.x][robot.y] = None
-                grid[posits[0]][posits[1]] = posits[2]
+                robot.x = posits[0]
+                robot.y = posits[1]
+                robot.facing = posits[2]
+            grid[robot.x][robot.y] = robot.facing
         elif command == MOVE:
             robot.move_position()
         elif command == LEFT:
