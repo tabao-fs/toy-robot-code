@@ -157,7 +157,7 @@ def get_position(posits):
 
 def run_robot():
     game_start = False
-    cur_posit = None
+    robot = None
     print('Enter toy robot commands')
     while True:
         command = input()
@@ -169,22 +169,22 @@ def run_robot():
             game_start = True
 
         if posits:
-            if not cur_posit:
-                cur_posit = Robot(posits[0], posits[1], posit[2])
+            if not robot:
+                robot = Robot(posits[0], posits[1], posit[2])
             else:
-                grid[cur_posit.x][cur_posit.y] = None
+                grid[robot.x][robot.y] = None
                 grid[posits[0]][posits[1]] = posits[2]
         elif command == MOVE:
-            posit = [cur_posit.x, cur_posit.y, grid[cur_posit.x][cur_posit.y]]
-            cur_posit = move_position(posit)
+            posit = [robot.x, robot.y, grid[robot.x][robot.y]]
+            robot = move_position(posit)
         elif command == LEFT:
-            posit = [cur_posit.x, cur_posit.y, grid[cur_posit.x][cur_posit.y]]
+            posit = [robot.x, robot.y, grid[robot.x][robot.y]]
             rotate_direction(posit, LEFT)
         elif command == RIGHT:
-            posit = [cur_posit.x, cur_posit.y, grid[cur_posit.x][cur_posit.y]]
+            posit = [robot.x, robot.y, grid[robot.x][robot.y]]
             rotate_direction(posit, RIGHT)
         elif command == REPORT:
-            posit = [cur_posit.x, cur_posit.y, grid[cur_posit.x][cur_posit.y]]
+            posit = [robot.x, robot.y, grid[robot.x][robot.y]]
             return get_position(posit)
 
 
