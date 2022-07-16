@@ -94,6 +94,10 @@ class Robot:
         return [self.x, self.y, self.facing]
 
 
+    def list_current_position(self):
+        return [self.x, self.y, self.facing]
+
+
     def get_position(self):
         return f'{self.x},{self.y},{self.facing}'
 
