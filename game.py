@@ -91,7 +91,7 @@ class Robot:
             self.x -= 1
             grid[self.x][self.y] = self.facing
 
-        return [self.x, self.y, self.facing]
+        return self.list_current_position()
 
 
     def list_current_position(self):
