@@ -53,24 +53,28 @@ class Robot:
 
 
     def rotate_direction(self, turn):
+        new_facing = None
         if turn == LEFT:
             if self.facing == NORTH:
-                grid[self.x][self.y] = WEST
+                new_facing = WEST
             elif self.facing == WEST:
-                grid[self.x][self.y] = SOUTH
+                new_facing = SOUTH
             elif self.facing == SOUTH:
-                grid[self.x][self.y] = EAST
+                new_facing = EAST
             elif self.facing == EAST:
-                grid[self.x][self.y] = NORTH
+                new_facing = NORTH
         elif turn == RIGHT:
             if self.facing == NORTH:
-                grid[self.x][self.y] = EAST
+                new_facing = EAST
             elif self.facing == EAST:
-                grid[self.x][self.y] = SOUTH
+                new_facing = SOUTH
             elif self.facing == SOUTH:
-                grid[self.x][self.y] = WEST
+                new_facing = WEST
             elif self.facing == WEST:
-                grid[self.x][self.y] = NORTH
+                new_facing = NORTH
+
+        self.facing = new_facing
+        grid[self.x][self.y] = new_facing
 
 
     def move_position(self):
