@@ -170,22 +170,18 @@ def run_robot():
 
         if posits:
             if not robot:
-                robot = Robot(posits[0], posits[1], posit[2])
+                robot = Robot(posits[0], posits[1], posits[2])
             else:
                 grid[robot.x][robot.y] = None
                 grid[posits[0]][posits[1]] = posits[2]
         elif command == MOVE:
-            posit = [robot.x, robot.y, grid[robot.x][robot.y]]
-            robot = move_position(posit)
+            robot.move_position()
         elif command == LEFT:
-            posit = [robot.x, robot.y, grid[robot.x][robot.y]]
-            rotate_direction(posit, LEFT)
+            robot.rotate_direction(LEFT)
         elif command == RIGHT:
-            posit = [robot.x, robot.y, grid[robot.x][robot.y]]
-            rotate_direction(posit, RIGHT)
+            robot.rotate_direction(RIGHT)
         elif command == REPORT:
-            posit = [robot.x, robot.y, grid[robot.x][robot.y]]
-            return get_position(posit)
+            return robot.get_position()
 
 
 if __name__ == '__main__':
