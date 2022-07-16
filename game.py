@@ -112,59 +112,6 @@ class Robot:
         return f'{self.x},{self.y},{self.facing}'
 
 
-def rotate_direction(posits, turn):
-    x = posits[0]
-    y = posits[1]
-    facing = posits[2]
-    if turn == LEFT:
-        if facing == NORTH:
-            grid[x][y] = WEST
-        elif facing == WEST:
-            grid[x][y] = SOUTH
-        elif facing == SOUTH:
-            grid[x][y] = EAST
-        elif facing == EAST:
-            grid[x][y] = NORTH
-    elif turn == RIGHT:
-        if facing == NORTH:
-            grid[x][y] = EAST
-        elif facing == EAST:
-            grid[x][y] = SOUTH
-        elif facing == SOUTH:
-            grid[x][y] = WEST
-        elif facing == WEST:
-            grid[x][y] = NORTH
-
-
-def move_position(posits):
-    x = posits[0]
-    y = posits[1]
-    facing = posits[2]
-
-    if facing == NORTH and y + 1 <= 4:
-        grid[x][y] = None
-        y += 1
-        grid[x][y] = facing
-    elif facing == EAST and x + 1 <= 4:
-        grid[x][y] = None
-        x += 1
-        grid[x][y] = facing
-    elif facing == SOUTH and y - 1 >= 0:
-        grid[x][y] = None
-        y -= 1
-        grid[x][y] = facing
-    elif facing == WEST and x - 1 >= 0:
-        grid[x][y] = None
-        x -= 1
-        grid[x][y] = facing
-
-    return [x, y, facing]
-
-
-def get_position(posits):
-    return f'{posits[0]},{posits[1]},{posits[2]}'
-
-
 def run_robot():
     game_start = False
     robot = None
