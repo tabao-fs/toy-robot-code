@@ -102,6 +102,12 @@ class Robot:
         return [self.x, self.y, self.facing]
 
 
+    def set_position(self, posits):
+        self.x = posits[0]
+        self.y = posits[1]
+        self.facing = posits[2]
+
+
     def get_position(self):
         return f'{self.x},{self.y},{self.facing}'
 
@@ -177,9 +183,7 @@ def run_robot():
                 robot = Robot(posits[0], posits[1], posits[2])
             else:
                 grid[robot.x][robot.y] = None
-                robot.x = posits[0]
-                robot.y = posits[1]
-                robot.facing = posits[2]
+                robot.set_position([posits[0], posits[1], posits[2]])
             grid[robot.x][robot.y] = robot.facing
         elif command == MOVE:
             robot.move_position()
