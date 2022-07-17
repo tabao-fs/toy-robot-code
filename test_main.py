@@ -1,6 +1,21 @@
 import unittest
 from unittest.mock import patch
-from main import run_robot
+from main import run_robot, place_coordinates
+
+
+class TestPlaceChecker(unittest.TestCase):
+
+    def test_place_coordinates_success(self):
+        res = place_coordinates('PLACE 0,0,NORTH')
+        self.assertEqual([0,0,'NORTH'], res)
+
+    def test_place_coordinates_fail_1(self):
+        res = place_coordinates('PLACE 5,5,NORTH')
+        self.assertEqual(False, res)
+
+    def test_place_coordinates_fail_2(self):
+        res = place_coordinates('PLACE')
+        self.assertEqual(False, res)
 
 
 class TestRobot(unittest.TestCase):
