@@ -48,6 +48,12 @@ class TestRobot(unittest.TestCase):
         res = run_robot()
         self.assertEqual('0,0,NORTH', res)
 
+    @patch('builtins.input')
+    def test_ignore_wrong_move_command(self, inp):
+        inp.side_effect = ['PLACE 0,0,NORTH', 'MOV', 'REPORT']
+        res = run_robot()
+        self.assertEqual('0,0,NORTH', res)
+
 
 if __name__ == '__main__':
     unittest.main()
