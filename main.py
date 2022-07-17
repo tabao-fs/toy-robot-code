@@ -42,62 +42,76 @@ def place_coordinates(str):
         return False
 
 
-def rotate_direction(posits, turn):
-    x = posits[0]
-    y = posits[1]
-    facing = posits[2]
-    if turn == LEFT:
-        if facing == NORTH:
-            grid[x][y] = WEST
-        elif facing == WEST:
-            grid[x][y] = SOUTH
-        elif facing == SOUTH:
-            grid[x][y] = EAST
-        elif facing == EAST:
-            grid[x][y] = NORTH
-    elif turn == RIGHT:
-        if facing == NORTH:
-            grid[x][y] = EAST
-        elif facing == EAST:
-            grid[x][y] = SOUTH
-        elif facing == SOUTH:
-            grid[x][y] = WEST
-        elif facing == WEST:
-            grid[x][y] = NORTH
+class Robot:
+    def __init__(self, x, y, facing):
+        self.x = x
+        self.y = y
+        self.facing = facing
 
 
-def move_position(posits):
-    x = posits[0]
-    y = posits[1]
-    facing = posits[2]
+    def rotate_direction(self, turn):
+        new_facing = None
+        if turn == LEFT:
+            if self.facing == NORTH:
+                new_facing = WEST
+            elif self.facing == WEST:
+                new_facing = SOUTH
+            elif self.facing == SOUTH:
+                new_facing = EAST
+            elif self.facing == EAST:
+                new_facing = NORTH
+        elif turn == RIGHT:
+            if self.facing == NORTH:
+                new_facing = EAST
+            elif self.facing == EAST:
+                new_facing = SOUTH
+            elif self.facing == SOUTH:
+                new_facing = WEST
+            elif self.facing == WEST:
+                new_facing = NORTH
 
-    if facing == NORTH and y + 1 <= 4:
-        grid[x][y] = None
-        y += 1
-        grid[x][y] = facing
-    elif facing == EAST and x + 1 <= 4:
-        grid[x][y] = None
-        x += 1
-        grid[x][y] = facing
-    elif facing == SOUTH and y - 1 >= 0:
-        grid[x][y] = None
-        y -= 1
-        grid[x][y] = facing
-    elif facing == WEST and x - 1 >= 0:
-        grid[x][y] = None
-        x -= 1
-        grid[x][y] = facing
-
-    return [x, y, facing]
+        self.facing = new_facing
+        grid[self.x][self.y] = new_facing
 
 
-def get_position(posits):
-    return f'{posits[0]},{posits[1]},{posits[2]}'
+    def move_position(self):
+        if self.facing == NORTH and self.y + 1 <= 4:
+            grid[self.x][self.y] = None
+            self.y += 1
+            grid[self.x][self.y] = self.facing
+        elif self.facing == EAST and self.x + 1 <= 4:
+            grid[self.x][self.y] = None
+            self.x += 1
+            grid[self.x][self.y] = self.facing
+        elif self.facing == SOUTH and self.y - 1 >= 0:
+            grid[self.x][self.y] = None
+            self.y -= 1
+            grid[self.x][self.y] = self.facing
+        elif self.facing == WEST and self.x - 1 >= 0:
+            grid[self.x][self.y] = None
+            self.x -= 1
+            grid[self.x][self.y] = self.facing
+
+        return self.list_current_position()
+
+
+    def list_current_position(self):
+        return [self.x, self.y, self.facing]
+
+
+    def set_position(self, posits):
+        self.x = posits[0]
+        self.y = posits[1]
+        self.facing = posits[2]
+
+
+    def get_position(self):
+        return f'{self.x},{self.y},{self.facing}'
 
 
 def run_robot():
     game_start = False
-    cur_posit = None
+    robot = None
     print('Enter toy robot commands')
     while True:
         command = input()
@@ -109,22 +123,20 @@ def run_robot():
             game_start = True
 
         if posits:
-            if cur_posit:
-                grid[cur_posit[0]][cur_posit[1]] = None
-            grid[posits[0]][posits[1]] = posits[2]
-            cur_posit = [posits[0], posits[1]]
+            if not robot:
+                robot = Robot(posits[0], posits[1], posits[2])
+            else:
+                grid[robot.x][robot.y] = None
+                robot.set_position([posits[0], posits[1], posits[2]])
+            grid[robot.x][robot.y] = robot.facing
         elif command == MOVE:
-            posit = [cur_posit[0], cur_posit[1], grid[cur_posit[0]][cur_posit[1]]]
-            cur_posit = move_position(posit)
+            robot.move_position()
         elif command == LEFT:
-            posit = [cur_posit[0], cur_posit[1], grid[cur_posit[0]][cur_posit[1]]]
-            rotate_direction(posit, LEFT)
+            robot.rotate_direction(LEFT)
         elif command == RIGHT:
-            posit = [cur_posit[0], cur_posit[1], grid[cur_posit[0]][cur_posit[1]]]
-            rotate_direction(posit, RIGHT)
+            robot.rotate_direction(RIGHT)
         elif command == REPORT:
-            posit = [cur_posit[0], cur_posit[1], grid[cur_posit[0]][cur_posit[1]]]
-            return get_position(posit)
+            return robot.get_position()
 
 
 if __name__ == '__main__':
